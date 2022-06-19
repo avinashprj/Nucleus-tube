@@ -1,0 +1,32 @@
+.sidebar-mobile {
+  display: none;
+  justify-content: space-around;
+}
+
+.sidebar-mobile-link {
+  padding: 0.3em 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-mobile-link-details {
+  margin-top: 0.3em;
+}
+
+@media only screen and (max-width: 42.375em) {
+  .sidebar-mobile {
+    display: flex;
+    position: fixed;
+    background-color: var(--clr-bg);
+    width: 100vw;
+    padding: 0.3em 0em;
+    border-top: 1px solid var(--border-color);
+    bottom: 0px;
+  }
+}
+@media only screen and (max-width: 25em) {
+  .sidebar-mobile-link-details {
+    font-size: 1.2rem;
+  }
+}
