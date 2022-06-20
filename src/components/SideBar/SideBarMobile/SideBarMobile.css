@@ -23,6 +23,7 @@
     padding: 0.3em 0em;
     border-top: 1px solid var(--border-color);
     bottom: 0px;
+    z-index: 1;
   }
 }
 @media only screen and (max-width: 25em) {

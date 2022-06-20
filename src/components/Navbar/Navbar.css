@@ -6,7 +6,7 @@ header {
 .navbar {
   background-color: var(--clr-bg);
   height: 8rem;
-  border-bottom: 1px solid var(--clr-grey-15);
+  /* border-bottom: 1px solid var(--clr-grey-15); */
   padding: 2rem 3rem;
   box-shadow: var(--lighter-shadow);
 }

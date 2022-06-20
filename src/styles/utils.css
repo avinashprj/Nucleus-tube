@@ -54,6 +54,8 @@ Note: Variables
   --clr-warning: #ff9800;
   --clr-black: #222;
   --clr-bg: #1f2028;
+  --clr-bg-2: #141319;
+  --clr-font: #b2aca2;
   --clr-hover: rgba(29, 78, 216, 0.1);
   --transition: all 0.3s linear;
   --transition-fast: all 0.1s linear;
