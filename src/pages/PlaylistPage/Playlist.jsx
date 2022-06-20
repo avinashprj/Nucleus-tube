@@ -2,7 +2,6 @@ import React from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { CgPlayList } from 'react-icons/cg';
 import { SideBarDesktop, SideBarMobile } from '../../components';
-import { VideoCard } from '../../components/VideoCard/VideoCard';
 
 export const Playlist = () => (
   <>
