@@ -1,3 +1,6 @@
 @import url("./Navbar/Navbar.css");
 @import url("./SideBar/SideBarDesktop/SideBarDesktop.css");
 @import url(./SideBar/SideBarMobile/SideBarMobile.css);
+@import url(./VideosGrid/VideosGrid.css);
+@import url(./VideosGrid/sub-components/VideoGridButtons/VideoGridButtons.css);
+@import url(./VideoCard/VideoCard.css);

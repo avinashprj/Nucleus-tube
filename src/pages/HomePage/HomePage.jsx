@@ -1,5 +1,5 @@
 import React from 'react';
-import { SideBarDesktop, SideBarMobile } from '../../components';
+import { VideosGrid, SideBarDesktop, SideBarMobile } from '../../components';
 
 export const HomePage = () => {
   const [state, useState] = React.useState('');
@@ -7,6 +7,7 @@ export const HomePage = () => {
     <>
       <SideBarDesktop />
       <SideBarMobile />
+      <VideosGrid />
     </>
   );
 };
