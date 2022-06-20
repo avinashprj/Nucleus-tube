@@ -8,8 +8,8 @@ export const LikesPage = () => (
     <SideBarMobile />
     <div className="flex-base flex-column container">
       <div className="outer-grid flex-base">
-        <div className="playlist-heading">
-          Liked <span className="playlist-number">( 1 )</span>
+        <div className="page-heading">
+          Liked <span className="page-number">( 1 )</span>
         </div>
       </div>
       <div className="flex-base">

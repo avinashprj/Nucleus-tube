@@ -9,8 +9,8 @@ export const Playlist = () => (
     <SideBarMobile />
     <div className="flex-base flex-column container">
       <div className="outer-grid flex-base">
-        <div className="playlist-heading">
-          Playlists <span className="playlist-number">( 1 )</span>
+        <div className="page-heading">
+          Playlists <span className="page-number">( 1 )</span>
         </div>
       </div>
       <div className="flex-base">
