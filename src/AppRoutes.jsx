@@ -1,7 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from './components';
-import { ErrorPage, HistoryPage, HomePage, LikesPage, Playlist } from './pages';
+import {
+  ErrorPage,
+  HistoryPage,
+  HomePage,
+  LikesPage,
+  Playlist,
+  WatchLaterPage,
+} from './pages';
 
 const AppRoutes = () => (
   <Routes>
@@ -10,6 +17,7 @@ const AppRoutes = () => (
       <Route path="/playlists" element={<Playlist />} />
       <Route path="/liked" element={<LikesPage />} />
       <Route path="/history" element={<HistoryPage />} />
+      <Route path="/watchlater" element={<WatchLaterPage />} />
     </Route>
     <Route path="*" element={<ErrorPage />} />
   </Routes>
