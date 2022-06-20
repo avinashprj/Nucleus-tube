@@ -1,0 +1,34 @@
+.playlist-heading {
+  padding: 1em 0 0 1.2em;
+  font-size: 2rem;
+}
+
+.playlist-number {
+  color: var(--clr-font);
+}
+.playlist-card-dots button {
+  color: white;
+}
+.playlist-card-heading {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: var(--clr-white);
+  background-color: transparent;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  margin-right: 0.5em;
+}
+
+.playlist-overlay {
+  font-size: 2.5rem;
+  background-color: var(--clr-bg);
+  height: 100%;
+  width: 40%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  opacity: 0.8;
+  border-radius: 0 0.5em 0.5em 0;
+}
