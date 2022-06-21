@@ -4,3 +4,4 @@
 @import url(./VideosGrid/VideosGrid.css);
 @import url(./VideosGrid/sub-components/VideoGridButtons/VideoGridButtons.css);
 @import url(./VideoCard/VideoCard.css);
+@import url("./PlaylistModal/PlaylistModal.css");

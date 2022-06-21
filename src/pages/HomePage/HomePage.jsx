@@ -1,13 +1,18 @@
 import React from 'react';
-import { VideosGrid, SideBarDesktop, SideBarMobile } from '../../components';
+import {
+  VideosGrid,
+  SideBarDesktop,
+  SideBarMobile,
+  PlaylistModal,
+} from '../../components';
 
-export const HomePage = () => {
-  const [state, useState] = React.useState('');
-  return (
-    <>
-      <SideBarDesktop />
-      <SideBarMobile />
-      <VideosGrid />
-    </>
-  );
-};
+export const HomePage = ({ playlistModal, setPlaylistModal }) => (
+  <>
+    <SideBarDesktop />
+    <SideBarMobile />
+    <VideosGrid
+      playlistModal={playlistModal}
+      setPlaylistModal={setPlaylistModal}
+    />
+  </>
+);

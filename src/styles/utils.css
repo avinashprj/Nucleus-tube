@@ -58,6 +58,7 @@ Note: Variables
   --clr-bg-3: #222230;
   --clr-font: #b2aca2;
   --clr-hover: #393943;
+  --clr-playlist-create: #3d3c40;
   --transition: all 0.3s linear;
   --transition-fast: all 0.1s linear;
   --transition-medium: all 0.2s linear;
@@ -184,6 +185,11 @@ img {
 button {
   background: none;
   cursor: pointer;
+}
+button:disabled {
+  background-color: rgba(239, 239, 239, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
 }
 
 h1 {

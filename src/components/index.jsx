@@ -5,6 +5,7 @@ import { SideBarMobile } from './SideBar/SideBarMobile/SideBarMobile';
 import { VideosGrid } from './VideosGrid/VideosGrid';
 import { VideoGridButtons } from './VideosGrid/sub-components/VideoGridButtons/VideoGridButtons';
 import { VideoCard } from './VideoCard/VideoCard';
+import { PlaylistModal } from './PlaylistModal/PlaylistModal';
 
 export {
   Navbar,
@@ -14,4 +15,5 @@ export {
   VideosGrid,
   VideoGridButtons,
   VideoCard,
+  PlaylistModal,
 };
