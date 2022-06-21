@@ -4,6 +4,7 @@ import { Playlist } from './PlaylistPage/Playlist';
 import { LikesPage } from './LikesPage/LikesPage';
 import { HistoryPage } from './HistoryPage/HistoryPage';
 import { WatchLaterPage } from './WatchLaterPage/WatchLaterPage';
+import { LoginPage } from './LoginPage/LoginPage';
 
 export {
   HomePage,
@@ -12,4 +13,5 @@ export {
   LikesPage,
   HistoryPage,
   WatchLaterPage,
+  LoginPage,
 };
