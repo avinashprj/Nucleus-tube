@@ -3,58 +3,95 @@ import { AiFillClockCircle } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { MdPlaylistAdd } from 'react-icons/md';
 
-export const VideoCard = () => {
-  const [videoOverlay, setVideoOverlay] = React.useState(false);
-  return (
-    <>
-      <div className="video-card">
-        <div className="video-card-main">
-          <img
-            src="https://i.ytimg.com/vi/JXeJANDKwDc/0.jpg"
-            alt="video thumbnail"
-            className=""
-          />
+export const VideoCard = () => (
+  <>
+    <div className="video-card">
+      <div className="video-card-main">
+        <img
+          src="https://i.ytimg.com/vi/JXeJANDKwDc/0.jpg"
+          alt="video thumbnail"
+          className=""
+        />
+      </div>
+      <div className="video-card-details">
+        <div className="flex-base flex-column ">
+          <button className="video-card-details-heading" type="button">
+            What Are You Doing With Your Life? The Tail End
+          </button>
+          <div className="video-card-channel">Kurzgesagt – In a Nutshell</div>
         </div>
-        <div className="video-card-details">
-          <div className="flex-base flex-column ">
-            <button className="video-card-details-heading" type="button">
-              What Are You Doing With Your Life? The Tail End
-            </button>
-            <div className="video-card-channel">Kurzgesagt – In a Nutshell</div>
-          </div>
-          <div className="video-card-dots">
-            <button
-              onClick={() => setVideoOverlay((prev) => !prev)}
-              className="border-none"
-              type="button"
-            >
-              <BsThreeDotsVertical className="icon-svg" />
-            </button>
-            {videoOverlay && (
-              <div className="flex-base flex-column video-card-overlay">
-                <button
-                  type="button"
-                  color="var(--font-color)"
-                  className="flex-al-center"
-                >
-                  <AiFillClockCircle />
-                  <div className="m-left-small">Add to Playlist</div>
-                </button>
-                <button
-                  type="button"
-                  color="var(--font-color)"
-                  className="flex-al-center"
-                >
-                  <MdPlaylistAdd />
-                  <div color="var(--error-color)" className="m-left-small">
-                    Add to Watch Later
-                  </div>
-                </button>
-              </div>
-            )}
-          </div>
+        <div className="video-card-dots">
+          <button className="border-none" type="button">
+            <BsThreeDotsVertical className="icon-svg" />
+          </button>
         </div>
       </div>
-    </>
-  );
-};
+    </div>
+    <div className="video-card">
+      <div className="video-card-main">
+        <img
+          src="https://i.ytimg.com/vi/RcGyVTAoXEU/0.jpg"
+          alt="video thumbnail"
+          className=""
+        />
+      </div>
+      <div className="video-card-details">
+        <div className="flex-base flex-column  ">
+          <button className="video-card-details-heading" type="button">
+            How to make stress your friend | Kelly McGonigal
+          </button>
+          <div className="video-card-channel">TED</div>
+        </div>
+        <div className="video-card-dots">
+          <button className="border-none" type="button">
+            <BsThreeDotsVertical className="icon-svg" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div className="video-card">
+      <div className="video-card-main">
+        <img
+          src="https://i.ytimg.com/vi/j6K0iQg_p1w/0.jpg"
+          alt="video thumbnail"
+          className=""
+        />
+      </div>
+      <div className="video-card-details">
+        <div className="flex-base flex-column  ">
+          <button className="video-card-details-heading" type="button">
+            Clover Hogan: What to do when climate change feels unstoppable | TED
+          </button>
+          <div className="video-card-channel">TED</div>
+        </div>
+        <div className="video-card-dots">
+          <button className="border-none" type="button">
+            <BsThreeDotsVertical className="icon-svg" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div className="video-card">
+      <div className="video-card-main">
+        <img
+          src="https://i.ytimg.com/vi/H14bBuluwB8/0.jpg"
+          alt="video thumbnail"
+          className=""
+        />
+      </div>
+      <div className="video-card-details">
+        <div className="flex-base flex-column  ">
+          <button className="video-card-details-heading" type="button">
+            Grit: the power of passion and perseverance | Angela Lee Duckworth
+          </button>
+          <div className="video-card-channel">TED</div>
+        </div>
+        <div className="video-card-dots">
+          <button className="border-none" type="button">
+            <BsThreeDotsVertical className="icon-svg" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </>
+);

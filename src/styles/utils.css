@@ -15,7 +15,7 @@ Note: Variables
   --clr-primary-3: #112f82;
   --clr-primary-4: #173ead;
   /* Note: primary/main color */
-  --clr-primary-5: #1d4ed8;
+  --clr-primary-5: #3383e6;
   /* Note: lighter shades of primary color */
   --clr-primary-6: #4a71e0;
   --clr-primary-7: #7795e8;
@@ -53,10 +53,11 @@ Note: Variables
   --clr-sidebar: #1d4ed8;
   --clr-warning: #ff9800;
   --clr-black: #222;
-  --clr-bg: #1f2028;
+  --clr-bg: #1e1e1e;
   --clr-bg-2: #141319;
+  --clr-bg-3: #222230;
   --clr-font: #b2aca2;
-  --clr-hover: rgba(29, 78, 216, 0.1);
+  --clr-hover: #393943;
   --transition: all 0.3s linear;
   --transition-fast: all 0.1s linear;
   --transition-medium: all 0.2s linear;

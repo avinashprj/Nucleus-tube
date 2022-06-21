@@ -7,6 +7,12 @@
 }
 .video-card-main {
   position: relative;
+  overflow: hidden;
+}
+.video-card-main img {
+  display: block;
+  height: auto;
+  overflow: hidden;
 }
 
 .video-card-main img {
