@@ -4,7 +4,6 @@
   cursor: pointer;
   /* outline: 1px solid red;
   border-radius: 1em; */
-  overflow: hidden;
 }
 .video-card-main {
   position: relative;
@@ -42,6 +41,26 @@
 }
 .video-card-dots button {
   color: var(--clr-white);
+}
+.video-card-overlay {
+  background-color: var(--clr-bg-3);
+  width: max-content;
+  border-radius: 0.4em;
+  position: absolute;
+  right: 0em;
+  z-index: 2;
+}
+.video-card-overlay button {
+  font-size: 1.5rem;
+  color: var(--font-color);
+  background-color: transparent;
+  padding: 0.6em 1em;
+  border: none;
+  border-radius: 0.4em;
+  text-align: start;
+}
+.video-card-overlay button:hover {
+  background-color: var(--clr-hover);
 }
 
 @media only screen and (max-width: 71.875em) {
