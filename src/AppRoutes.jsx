@@ -8,6 +8,7 @@ import {
   LikesPage,
   LoginPage,
   Playlist,
+  SignupPage,
   WatchLaterPage,
 } from './pages';
 
@@ -20,6 +21,7 @@ const AppRoutes = () => (
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/watchlater" element={<WatchLaterPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Route>
     <Route path="*" element={<ErrorPage />} />
   </Routes>
