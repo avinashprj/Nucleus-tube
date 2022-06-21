@@ -1,0 +1,41 @@
+.single-video {
+  width: 95%;
+  height: 70vh;
+  margin: 0 auto;
+}
+.single-video-heading {
+  font-weight: 600;
+  font-size: 2rem;
+}
+.single-video-channel {
+  color: var(--clr-font);
+}
+
+.single-video-buttons {
+  margin: 1em 0px 4em;
+}
+
+.single-video-button {
+  font-size: 1.5rem;
+  color: var(--font-color);
+  background-color: var(--clr-hover);
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 1em;
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 42.375em) {
+  .single-video {
+    width: 100%;
+    height: 50vh;
+  }
+  @media only screen and (max-width: 31.25em) {
+    .single-video {
+      width: 100%;
+      height: 40vh;
+    }
+  }
+}
