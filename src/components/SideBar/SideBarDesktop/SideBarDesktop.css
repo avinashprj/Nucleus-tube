@@ -15,6 +15,11 @@
 .nav-sidebar-link:hover {
   background-color: var(--clr-hover);
 }
+
+.active .nav-sidebar-link {
+  background-color: var(--clr-hover);
+}
+
 .nav-sidebar-link-details {
   margin-left: 1.5em;
 }

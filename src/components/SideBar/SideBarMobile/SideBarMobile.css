@@ -2,12 +2,25 @@
   display: none;
   justify-content: space-around;
 }
+.sidebar-mobile a {
+  flex-grow: 1;
+  flex-shrink: 2;
+}
 
 .sidebar-mobile-link {
   padding: 0.3em 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.sidebar-mobile-link {
+  transition: var(--transition);
+}
+.sidebar-mobile-link:hover {
+  background-color: var(--clr-hover);
+}
+.active .sidebar-mobile-link {
+  background-color: var(--clr-hover);
 }
 
 .sidebar-mobile-link-details {
@@ -20,7 +33,7 @@
     position: fixed;
     background-color: var(--clr-bg);
     width: 100vw;
-    padding: 0.3em 0em;
+    padding: 0.3em 0;
     border-top: 1px solid var(--border-color);
     bottom: 0px;
     z-index: 1;

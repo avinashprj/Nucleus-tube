@@ -6,38 +6,42 @@ import {
 } from 'react-icons/bs';
 import { AiFillHome } from 'react-icons/ai';
 import { FaHistory } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 export const SideBarDesktop = () => (
   <aside className="nav-sidebar">
-    <a href="/">
+    <NavLink to="/">
       <div cursor="pointer" className="nav-sidebar-link flex-al-center ">
         <AiFillHome />
         <div className="nav-sidebar-link-details">Home</div>
       </div>
-    </a>
-    <a href="/playlists">
+    </NavLink>
+    <NavLink to="/playlists">
       <div cursor="pointer" className="nav-sidebar-link flex-al-center">
         <BsCollectionPlayFill />
         <div className="nav-sidebar-link-details">Playlists</div>
       </div>
-    </a>
-    <a href="/liked">
+    </NavLink>
+    <NavLink to="/liked">
       <div cursor="pointer" className="nav-sidebar-link flex-al-center">
         <BsFillHeartFill />
         <div className="nav-sidebar-link-details">Liked</div>
       </div>
-    </a>
-    <a href="/history">
-      <div cursor="pointer" className="nav-sidebar-link flex-al-center">
+    </NavLink>
+    <NavLink
+      className={({ isActive }) => (isActive ? 'nav-sidebar-link-active' : '')}
+      to="/history"
+    >
+      <div cursor="pointer" className={`nav-sidebar-link flex-al-center `}>
         <FaHistory />
         <div className="nav-sidebar-link-details">History</div>
       </div>
-    </a>
-    <a href="/watchlater">
+    </NavLink>
+    <NavLink to="/watchlater">
       <div cursor="pointer" className="nav-sidebar-link flex-al-center">
         <BsFillStopwatchFill />
         <div className="nav-sidebar-link-details">Watch Later</div>
       </div>
-    </a>
+    </NavLink>
   </aside>
 );
