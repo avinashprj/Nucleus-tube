@@ -15,3 +15,6 @@ export const getCategorizedData = (videos, category) => {
   }
   return videos.filter((video) => video.category === category);
 };
+
+export const isPresentInState = (item, state) =>
+  state?.find((stateItem) => stateItem._id === item._id);
