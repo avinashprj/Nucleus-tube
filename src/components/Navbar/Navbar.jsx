@@ -1,14 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoIosSearch } from 'react-icons/io';
 import { FiX } from 'react-icons/fi';
 import { FaUser, FaSearch } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
 import { useCloseOnClickOutside } from '../../CustomHooks/CustomHooks';
+import { logoutUser } from '../../features/authentication/authenticationSlice';
 
-export const Navbar = () => {
+export const Navbar = ({ setSkip }) => {
   const [toggleSearchModal, setToggleSearchModal] = React.useState(false);
   const searchBarModalRef = React.useRef(null);
   useCloseOnClickOutside(searchBarModalRef, setToggleSearchModal);
+  const dispatch = useDispatch();
+  const { authToken } = useSelector((state) => state.authentication);
+  const navigate = useNavigate();
   return (
     <nav className="navbar flex-nav">
       <div className="nav-left flex-al-center">
@@ -63,9 +68,26 @@ export const Navbar = () => {
         >
           <FaSearch className="icon-svg" />
         </button>
-        <Link to="/login" className="flex">
+        {authToken.id ? (
+          <button
+            type="button"
+            onClick={() => {
+              dispatch(logoutUser());
+              setSkip(true);
+              navigate('/login');
+            }}
+            className="flex-al-center border-none logout-btn"
+          >
+            LOG OUT
+          </button>
+        ) : (
+          <Link to="/login" className="flex-al-center border-none">
+            <FaUser className="nav-icons" />
+          </Link>
+        )}
+        {/* <Link to="/login" className="flex">
           <FaUser className="pointer icon-svg " />
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );
