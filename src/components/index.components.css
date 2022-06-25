@@ -5,3 +5,4 @@
 @import url(./VideosGrid/sub-components/VideoGridButtons/VideoGridButtons.css);
 @import url(./VideoCard/VideoCard.css);
 @import url("./PlaylistModal/PlaylistModal.css");
+@import url("./Loader/Loader.css");

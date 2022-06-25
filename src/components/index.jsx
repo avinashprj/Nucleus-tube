@@ -6,6 +6,8 @@ import { VideosGrid } from './VideosGrid/VideosGrid';
 import { VideoGridButtons } from './VideosGrid/sub-components/VideoGridButtons/VideoGridButtons';
 import { VideoCard } from './VideoCard/VideoCard';
 import { PlaylistModal } from './PlaylistModal/PlaylistModal';
+import { Loader } from './Loader/Loader';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 
 export {
   Navbar,
@@ -16,4 +18,6 @@ export {
   VideoGridButtons,
   VideoCard,
   PlaylistModal,
+  Loader,
+  PrivateRoute,
 };
