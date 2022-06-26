@@ -1,14 +1,30 @@
 import React from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 import { SideBarDesktop, SideBarMobile } from '../../components';
 import { useInput } from '../../CustomHooks/CustomHooks';
+import {
+  useGuestLoginMutation,
+  useUserLoginMutation,
+} from '../../features/api/auth/authSliceApi';
 
-export const LoginPage = () => {
+export const LoginPage = ({ setSkip }) => {
   const { inputState, inputUpdate } = useInput({
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
+  const [guestLogin, { isLoading, isSuccess: guestSuccess }] =
+    useGuestLoginMutation();
+  const [loginUser, { isLoading: isLoadingUser, isSuccess: isLoginSuccess }] =
+    useUserLoginMutation();
+  React.useEffect(() => {
+    if (guestSuccess || isLoginSuccess) {
+      setSkip(false);
+      navigate('/');
+    }
+  }, [guestSuccess, isLoginSuccess, navigate, setSkip]);
 
   return (
     <>
@@ -69,11 +85,19 @@ export const LoginPage = () => {
           <div className="form-group">
             <button
               type="submit"
+              disabled={isLoadingUser ?? isLoadingUser}
+              onClick={() => {
+                loginUser(inputState);
+              }}
               className="btn btn-squared btn-outline-secondary w-100 spacing-medium weight-600"
             >
               Login
             </button>
             <button
+              disabled={isLoading ?? isLoading}
+              onClick={() => {
+                guestLogin();
+              }}
               type="button"
               className="btn btn-squared btn-outline-secondary w-100 spacing-medium weight-600 m-top-medium"
             >
