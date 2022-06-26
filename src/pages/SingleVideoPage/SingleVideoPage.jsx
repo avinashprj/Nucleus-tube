@@ -4,40 +4,45 @@ import { RiPlayListAddLine } from 'react-icons/ri';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player/youtube';
-import { SideBarDesktop, SideBarMobile } from '../../components';
+import {
+  SideBarDesktop,
+  SideBarMobile,
+  SingleVideoPlayer,
+} from '../../components';
 import {
   usePostLikesMutation,
   useRemoveLikesMutation,
 } from '../../features/api/likesApi/likesSliceApi';
 import { isPresentInState } from '../../utils/utils';
+import {
+  usePostWatchLaterMutation,
+  useRemoveWatchLaterMutation,
+} from '../../features/api/watchLaterApi/watchLaterApi';
 
 export const SingleVideoPage = ({ setPlaylistModal }) => {
   const { videoID } = useParams();
   const { videos } = useSelector((state) => state.videos);
   const { likes } = useSelector((state) => state.likes);
+  const { watchLater } = useSelector((state) => state.watchLater);
   const singleVideo = videos.find((video) => video._id === videoID);
   const { authToken } = useSelector((state) => state.authentication);
 
   const [setLikes, { isLoading: isPostingLikes }] = usePostLikesMutation();
   const [removeLikes, { isLoading: isDeletingLikes }] =
     useRemoveLikesMutation();
+  const [addWatchLater, { isLoading: addingWatchLater }] =
+    usePostWatchLaterMutation();
+  const [removeWatchLater, { isLoading: isDeletingWatchLater }] =
+    useRemoveWatchLaterMutation();
+
   return (
     <>
       <SideBarDesktop />
       <SideBarMobile />
-      <div className="flex-base container">
+      <div style={{ height: '100vh' }} className="flex-base container">
         <div className="outer-grid single-video ">
-          <ReactPlayer
-            className="react-player"
-            width="100%"
-            height="100%"
-            playing
-            light={singleVideo?.img}
-            // onStart={singleVideo}
-            url={`https://www.youtube.com/embed/${videoID}`}
-            controls
-          />
-          <div style={{ margin: '1em' }} className="flex-base flex-column">
+          <SingleVideoPlayer singleVideo={singleVideo} videoID={videoID} />
+          <div className="flex-base flex-column single-video-main">
             <div className="single-video-heading">{singleVideo?.title}</div>
             <div className="single-video-channel flex-al-center m-top-smaller">
               <div className="single-video-channel-img m-right-smallest">
@@ -45,7 +50,7 @@ export const SingleVideoPage = ({ setPlaylistModal }) => {
               </div>
               {singleVideo?.creator}
             </div>
-            <div className="flex-al-center-wrap single-video-buttons">
+            <div className="flex-wrap single-video-buttons">
               {authToken.id ? (
                 isPresentInState(singleVideo, likes) ? (
                   <button
@@ -84,15 +89,46 @@ export const SingleVideoPage = ({ setPlaylistModal }) => {
                   </div>
                 </Link>
               )}
-              <button
-                className="flex-al-center single-video-button"
-                type="button"
-              >
-                <AiFillClockCircle />
-                <div style={{ marginLeft: '0.5em' }} className="">
-                  Watch Later
-                </div>
-              </button>
+              {/* note:Watch LATER */}
+              {authToken.id ? (
+                isPresentInState(singleVideo, watchLater) ? (
+                  <button
+                    onClick={() => removeWatchLater({ authToken, singleVideo })}
+                    className=" flex-al-center single-video-button active-watchLater"
+                    type="button"
+                    disabled={isDeletingWatchLater && isDeletingWatchLater}
+                  >
+                    <AiFillClockCircle />
+                    <div style={{ marginLeft: '0.5em' }} className="">
+                      {(isDeletingWatchLater && 'Removing...') || 'Watch Later'}
+                    </div>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => addWatchLater({ authToken, singleVideo })}
+                    className="flex-al-center single-video-button"
+                    type="button"
+                    disabled={addingWatchLater && addingWatchLater}
+                  >
+                    <AiFillClockCircle />
+                    <div style={{ marginLeft: '0.5em' }} className="">
+                      {(addingWatchLater && 'Adding...') || 'Watch Later'}
+                    </div>
+                  </button>
+                )
+              ) : (
+                <Link
+                  to="/login"
+                  className="flex-al-center single-video-button"
+                  type="button"
+                >
+                  <AiFillClockCircle />
+                  <div style={{ marginLeft: '0.5em' }} className="">
+                    Watch Later
+                  </div>
+                </Link>
+              )}
+
               <button
                 className="flex-al-center single-video-button"
                 type="button"
