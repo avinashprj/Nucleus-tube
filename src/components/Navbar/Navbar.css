@@ -23,7 +23,7 @@ header {
 }
 .navbar .logout-btn {
   border-radius: 1rem;
-  color: var(--clr-white);
+  color: var(--clr-grey-10);
   border: 1px solid var(--clr-primary-5);
   padding: 0.5rem 1rem;
   font-weight: 600;
@@ -73,7 +73,7 @@ header {
 /* note: desktop search bar */
 .search-bar-center-desktop {
   width: 45vw;
-  background-color: var(--clr-white);
+  background-color: var(--clr-white-2);
   /* padding-bottom: 0.5rem; */
   border: 1px solid var(--clr-border);
   padding: 0.4em 0.8em;
@@ -84,10 +84,10 @@ header {
   flex-grow: 1;
   border: none;
   font-size: 1.5rem;
-  color: var(--clr-grey-10);
+  color: var(--clr-input);
 }
 .search-bar-center-desktop input:focus {
-  color: var(--clr-bg);
+  color: var(--clr-input);
   outline: none;
 }
 
@@ -116,9 +116,7 @@ header {
   font-size: 1.5rem;
   color: var(--clr-grey-10);
 }
-.search-bar-center input:focus {
-  outline: none;
-}
+
 .search-bar-center button {
   border: none;
 }
@@ -136,7 +134,7 @@ header {
   display: none !important;
 }
 .search-bar-center input:focus {
-  color: var(--clr-bg);
+  color: var(--clr-grey-10);
   outline: none;
 }
 

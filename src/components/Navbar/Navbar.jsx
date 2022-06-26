@@ -6,6 +6,7 @@ import { FaUser, FaSearch } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { useCloseOnClickOutside } from '../../CustomHooks/CustomHooks';
 import { logoutUser } from '../../features/authentication/authenticationSlice';
+import { Theme } from '../Theme/Theme';
 
 export const Navbar = ({ setSkip }) => {
   const [toggleSearchModal, setToggleSearchModal] = React.useState(false);
@@ -76,15 +77,16 @@ export const Navbar = ({ setSkip }) => {
               setSkip(true);
               navigate('/login');
             }}
-            className="flex-al-center border-none logout-btn"
+            className="flex-al-center border-none logout-btn "
           >
             LOG OUT
           </button>
         ) : (
-          <Link to="/login" className="flex-al-center border-none">
-            <FaUser className="nav-icons" />
+          <Link to="/login" className="flex-al-center border-none ">
+            <FaUser className="nav-icons " />
           </Link>
         )}
+        <Theme />
         {/* <Link to="/login" className="flex">
           <FaUser className="pointer icon-svg " />
         </Link> */}
