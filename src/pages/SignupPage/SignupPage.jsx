@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { SideBarDesktop, SideBarMobile } from '../../components';
 
 import { useInput } from '../../CustomHooks/CustomHooks';
+import { useUserSignupMutation } from '../../features/api/auth/authSliceApi';
 
 export const SignupPage = () => {
   const { inputState, inputUpdate } = useInput({
@@ -14,8 +15,33 @@ export const SignupPage = () => {
     password: '',
     confirmPassword: '',
   });
-
   const navigate = useNavigate();
+
+  const [signupUser, { isLoading, isSuccess }] = useUserSignupMutation();
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      navigate('/');
+    }
+  }, [isSuccess, navigate]);
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    if (inputState.password.length < 4) {
+      toast.info('please add at least 4 characters ');
+      return;
+    }
+    const passwordMatch = inputState.password === inputState.confirmPassword;
+    if (passwordMatch && inputState.password !== '') {
+      signupUser(inputState);
+    } else {
+      if (!passwordMatch) {
+        toast.error(`passwords don't match`);
+        return;
+      }
+      toast.error('please enter correct details');
+    }
+  };
 
   return (
     <>
@@ -106,6 +132,8 @@ export const SignupPage = () => {
             <button
               type="submit"
               className="btn btn-squared btn-outline-secondary w-100 spacing-medium weight-600"
+              disabled={isLoading && isLoading}
+              onClick={(e) => handleSignUp(e)}
             >
               Sign Up
             </button>
