@@ -1,33 +1,40 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+  useLocation,
+} from 'react-router-dom';
+import { setSingleCategories } from '../../../../features/videos/videosSlice';
 
-export const VideoGridButtons = () => (
-  <div className="homepage-buttons flex-base ">
-    <button cursor="pointer" className="homepage-button" type="button">
-      All
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      TED
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Life
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Science
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Learning
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Creativity
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Work
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Kurzgesagt
-    </button>
-    <button cursor="pointer" className="homepage-button" type="button">
-      Psychology
-    </button>
-  </div>
-);
+export const VideoGridButtons = ({ categories }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  return (
+    <div className="homepage-buttons flex-base ">
+      {categories.map((category) => (
+        <button
+          onClick={() => {
+            navigate({
+              pathname: '/',
+              search: createSearchParams({
+                category: category.categoryName,
+              }).toString(),
+            });
+            dispatch(setSingleCategories(category.categoryName));
+          }}
+          key={category._id}
+          cursor="pointer"
+          className={`homepage-button ${
+            params.get('category') === category.categoryName ? 'active' : ''
+          }`}
+          type="button"
+        >
+          <span>{category?.categoryName}</span>
+        </button>
+      ))}
+    </div>
+  );
+};

@@ -6,6 +6,11 @@
 .homepage-buttons::-webkit-scrollbar {
   display: none;
 }
+.active.homepage-button {
+  text-transform: capitalize;
+  background-color: var(--clr-primary-5);
+  color: var(--clr-white);
+}
 .homepage-button {
   display: flex;
   -webkit-box-pack: center;
@@ -14,8 +19,9 @@
   align-items: center;
   font-weight: 600;
   font-size: 1.5rem;
-  color: var(--clr-white);
-  background-color: var(--clr-primary-5);
+  color: var(--clr-white-2);
+  background-color: var(--clr-bg-4);
+
   padding: 0.5em 1em;
   border: none;
   border-radius: 1em;
@@ -35,4 +41,3 @@
     padding-left: 0.5em;
   }
 }
-
