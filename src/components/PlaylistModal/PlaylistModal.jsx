@@ -1,14 +1,20 @@
 import React from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { FiX, FiXCircle } from 'react-icons/fi';
+import { useCloseOnClickOutside } from '../../CustomHooks/CustomHooks';
 
 export const PlaylistModal = ({ playlistModal, setPlaylistModal }) => {
   const [createPlaylist, setCreatePlaylist] = React.useState(false);
+  const playlistRef = React.useRef(null);
+  useCloseOnClickOutside(playlistRef, setPlaylistModal);
   return (
     <>
       {playlistModal && (
         <div className="flex playlist-outer-modal">
-          <div className="flex-base flex-column playlist-inner-modal">
+          <div
+            ref={playlistRef}
+            className="flex-base flex-column playlist-inner-modal"
+          >
             <div className="flex-nav ">
               <div className="fs-medium">Save to...</div>
               <button

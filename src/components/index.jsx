@@ -8,6 +8,7 @@ import { VideoCard } from './VideoCard/VideoCard';
 import { PlaylistModal } from './PlaylistModal/PlaylistModal';
 import { Loader } from './Loader/Loader';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { SingleVideoPlayer } from './SingleVideoPlayer/SingleVideoPlayer';
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   PlaylistModal,
   Loader,
   PrivateRoute,
+  SingleVideoPlayer,
 };

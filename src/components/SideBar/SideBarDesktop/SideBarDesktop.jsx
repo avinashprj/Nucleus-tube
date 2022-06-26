@@ -28,11 +28,8 @@ export const SideBarDesktop = () => (
         <div className="nav-sidebar-link-details">Liked</div>
       </div>
     </NavLink>
-    <NavLink
-      className={({ isActive }) => (isActive ? 'nav-sidebar-link-active' : '')}
-      to="/history"
-    >
-      <div cursor="pointer" className={`nav-sidebar-link flex-al-center `}>
+    <NavLink to="/history">
+      <div cursor="pointer" className="nav-sidebar-link flex-al-center ">
         <FaHistory />
         <div className="nav-sidebar-link-details">History</div>
       </div>

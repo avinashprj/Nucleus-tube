@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 import { Navbar } from '../Navbar/Navbar';
 import { PlaylistModal } from '../PlaylistModal/PlaylistModal';
 
-export const SharedLayout = ({ playlistModal, setPlaylistModal }) => (
+export const SharedLayout = ({ playlistModal, setPlaylistModal, setSkip }) => (
   <>
     <header>
-      <Navbar />
+      <Navbar setSkip={setSkip} />
     </header>
     <PlaylistModal
       playlistModal={playlistModal}

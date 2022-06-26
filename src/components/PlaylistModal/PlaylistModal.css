@@ -18,7 +18,7 @@
 
 .playlist-modal-symbol {
   font-size: 2rem;
-  color: var(--clr-white);
+  color: var(--clr-grey-10);
 }
 .playlist-checkbox {
   padding: 1em 0.5em;
@@ -28,11 +28,11 @@
 }
 .playlist-add button {
   font-size: 1.8rem;
-  color: var(--clr-white);
+  color: var(--clr-grey-10);
 }
 .playlist-create-input {
   font-size: 1.6rem;
-  color: var(--clr-white);
+  color: var(--clr-white-2);
   background-color: var(--clr-playlist-create);
   height: 2em;
   padding: 0.5em;
