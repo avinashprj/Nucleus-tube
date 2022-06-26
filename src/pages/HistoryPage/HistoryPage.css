@@ -1,0 +1,13 @@
+.btn-clear-history {
+  transition: var(--transition-medium);
+  color: var(--clr-grey-10);
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  margin-right: 1em;
+  padding: 0.5em;
+  outline: 1px solid var(--clr-red-danger);
+}
+.btn-clear-history:hover {
+  outline: 1px solid var(--clr-primary-5);
+  color: var(--clr-primary-5);
+}

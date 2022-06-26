@@ -7,6 +7,13 @@ export const watchLaterSliceApi = createApi({
   reducerPath: 'watchLaterSliceApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/user' }),
   endpoints: (builder) => ({
+    getWatchLater: builder.query({
+      query: (authToken) => ({
+        url: '/watchlater',
+        method: 'GET',
+        headers: { authorization: authToken.id },
+      }),
+    }),
     postWatchLater: builder.mutation({
       query: ({ singleVideo: video, authToken: { id } }) => {
         console.log(video, id);
@@ -62,5 +69,8 @@ export const watchLaterSliceApi = createApi({
   }),
 });
 
-export const { usePostWatchLaterMutation, useRemoveWatchLaterMutation } =
-  watchLaterSliceApi;
+export const {
+  usePostWatchLaterMutation,
+  useRemoveWatchLaterMutation,
+  useGetWatchLaterQuery,
+} = watchLaterSliceApi;

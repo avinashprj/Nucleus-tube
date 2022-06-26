@@ -7,6 +7,13 @@ export const historySliceApi = createApi({
   reducerPath: 'historySliceApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/user' }),
   endpoints: (builder) => ({
+    getHistory: builder.query({
+      query: (authToken) => ({
+        url: '/history',
+        method: 'GET',
+        headers: { authorization: authToken.id },
+      }),
+    }),
     postHistory: builder.mutation({
       query: ({ singleVideo: video, authToken: { id } }) => {
         console.log(video, id);
@@ -59,11 +66,14 @@ export const historySliceApi = createApi({
       },
     }),
     clearHistory: builder.mutation({
-      query: (authToken) => ({
-        url: '/history/all',
-        method: 'DELETE',
-        headers: { authorization: authToken.id },
-      }),
+      query: (authToken) => {
+        console.log(authToken);
+        return {
+          url: '/history/all',
+          method: 'DELETE',
+          headers: { authorization: authToken.id },
+        };
+      },
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -75,12 +85,17 @@ export const historySliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          toast.error('something went Wrong 11');
+          console.log(err);
+          toast.error('something went Wrong history');
         }
       },
     }),
   }),
 });
 
-export const { usePostHistoryMutation, useRemoveHistoryMutation } =
-  historySliceApi;
+export const {
+  usePostHistoryMutation,
+  useRemoveHistoryMutation,
+  useClearHistoryMutation,
+  useGetHistoryQuery,
+} = historySliceApi;

@@ -1,16 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { SideBarDesktop, SideBarMobile, VideoCard } from '../../components';
+import { useClearHistoryMutation } from '../../features/api/historyApi/historySliceApi';
 
 export const HistoryPage = () => {
   const { history } = useSelector((store) => store.history);
+  const { authToken } = useSelector((store) => store.authentication);
   console.log(history);
+  const [clearHistory, { isLoading: isClearingHistory }] =
+    useClearHistoryMutation();
   return (
     <>
       <SideBarDesktop />
       <SideBarMobile />
       <div className="flex-base flex-column container">
-        <div className="outer-grid flex-nav">
+        <div
+          className="outer-grid flex-nav"
+          style={{ marginBottom: '1em', marginTop: '1em' }}
+        >
           <div className="page-heading">
             History
             <span className="page-number">
@@ -18,9 +25,16 @@ export const HistoryPage = () => {
             </span>
           </div>
           <div className="">
-            <button className="btn fs-small btn-outline-primary" type="button">
-              Clear History
-            </button>
+            {history?.length > 0 && (
+              <button
+                disabled={isClearingHistory}
+                onClick={() => clearHistory({ authToken })}
+                className="btn-clear-history border-none"
+                type="button"
+              >
+                {isClearingHistory ? 'Clearing...' : 'Clear History'}
+              </button>
+            )}
           </div>
         </div>
         <div className="flex-base">
