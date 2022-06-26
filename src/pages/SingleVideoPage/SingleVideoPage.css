@@ -3,6 +3,10 @@
   height: 70vh;
   margin: 0 auto;
 }
+.single-video-main {
+  margin-left: 1em;
+  padding: 1em;
+}
 .single-video-heading {
   font-weight: 600;
   font-size: 2rem;
@@ -16,7 +20,11 @@
 }
 .active-like.single-video-button {
   font-weight: 600;
-  color: #f16f55;
+  color: var(--clr-like);
+}
+.active-watchLater.single-video-button {
+  font-weight: 600;
+  color: var(--clr-primary-5);
 }
 
 .single-video-button {
@@ -25,7 +33,7 @@
   background-color: var(--clr-hover);
   padding: 0.5em 1em;
   border: none;
-  border-radius: 1em;
+  border-radius: 2em;
   margin-bottom: 0.5em;
   margin-right: 1em;
   cursor: pointer;

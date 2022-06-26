@@ -18,7 +18,6 @@
 .form-input {
   font-size: 1.5rem;
   font-family: inherit;
-  color: inherit;
   padding: 1.5rem 2rem;
   border-radius: 1rem;
   background-color: var(--clr-grey-12);
@@ -31,7 +30,7 @@
 }
 
 .form-input:focus {
-  color: var(--clr-bg);
+  color: var(--clr-input);
   outline: none;
 }
 /* @media only screen and (max-width: 56.25em) {
@@ -59,6 +58,7 @@
   margin-left: 4%;
   margin-top: 0.7rem;
   display: block;
+  color: var(--clr-primary-5);
   transition: all 0.3s;
 }
 .form-input:placeholder-shown + .form-label {
@@ -71,6 +71,7 @@
   display: none;
 }
 .form-radio-label {
+  color: var(--clr-grey-10);
   font-size: 1.3rem;
   cursor: pointer;
   position: relative;
