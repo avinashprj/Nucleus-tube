@@ -3,26 +3,25 @@ import { AiFillClockCircle } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { MdPlaylistAdd } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { ActionButtons } from './sub-components/ActionButtons';
 
-export const VideoCard = ({ setPlaylistModal }) => {
+export const VideoCard = ({ setPlaylistModal, singleVideo }) => {
   const [videoOverlay, setVideoOverlay] = React.useState(false);
-
   return (
     <>
       <div className="video-card">
-        <Link to="/video/singleVideo" className="video-card-main">
-          <img
-            src="https://i.ytimg.com/vi/JXeJANDKwDc/0.jpg"
-            alt="video thumbnail"
-            className=""
-          />
+        <Link to={`/video/${singleVideo._id}`} className="video-card-main">
+          <img src={`${singleVideo.img}`} alt="video thumbnail" className="" />
         </Link>
         <div className="video-card-details">
-          <Link to="/video/singleVideo" className="flex-base flex-column ">
+          <Link
+            to={`/video/${singleVideo._id}`}
+            className="flex-base flex-column "
+          >
             <button className="video-card-details-heading" type="button">
-              What Are You Doing With Your Life? The Tail End
+              {singleVideo.title}
             </button>
-            <div className="video-card-channel">Kurzgesagt – In a Nutshell</div>
+            <div className="video-card-channel">{singleVideo.creator}</div>
           </Link>
           <div className="video-card-dots">
             <button
@@ -33,20 +32,11 @@ export const VideoCard = ({ setPlaylistModal }) => {
               <BsThreeDotsVertical className="icon-svg" />
             </button>
             {videoOverlay && (
-              <div className="flex-base flex-column video-card-overlay">
-                <button
-                  type="button"
-                  className="flex-al-center"
-                  onClick={() => setPlaylistModal((prev) => !prev)}
-                >
-                  <AiFillClockCircle />
-                  <div className="m-left-small">Add to Playlist</div>
-                </button>
-                <button type="button" className="flex-al-center">
-                  <MdPlaylistAdd />
-                  <div className="m-left-small">Add to Watch Later</div>
-                </button>
-              </div>
+              <ActionButtons
+                singleVideo={singleVideo}
+                setPlaylistModal={setPlaylistModal}
+                setVideoOverlay={setVideoOverlay}
+              />
             )}
           </div>
         </div>

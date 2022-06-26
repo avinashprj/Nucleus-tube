@@ -28,7 +28,7 @@
 .video-card-details-heading {
   font-weight: 600;
   font-size: 1.4rem;
-  color: var(--clr-white);
+  color: var(--clr-grey-10);
   background-color: transparent;
   padding: 0px;
   border: none;
@@ -46,7 +46,7 @@
   position: relative;
 }
 .video-card-dots button {
-  color: var(--clr-white);
+  color: var(--clr-grey-10);
 }
 .video-card-overlay {
   background-color: var(--clr-bg-3);
@@ -56,19 +56,30 @@
   right: 0em;
   z-index: 2;
 }
-.video-card-overlay button {
+.video-card-overlay button,
+.video-card-overlay a {
   font-size: 1.5rem;
-  color: var(--font-color);
+  color: var(--clr-white-2);
   background-color: transparent;
   padding: 0.6em 1em;
   border: none;
   border-radius: 0.4em;
   text-align: start;
 }
-.video-card-overlay button:hover {
+.video-card-overlay button:hover,
+.video-card-overlay a:hover {
   background-color: var(--clr-hover);
+  color: var(--clr-grey-10);
 }
 
+.active-button.active-watchlater {
+  font-weight: 600;
+  color: var(--clr-primary-5);
+}
+.active-button.active-history {
+  font-weight: 600;
+  color: var(--clr-red-light);
+}
 @media only screen and (max-width: 71.875em) {
   .video-card {
     width: 23vw;
