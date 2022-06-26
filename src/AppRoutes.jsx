@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { SharedLayout } from './components';
+import { PrivateRoute, SharedLayout } from './components';
 import {
   ErrorPage,
   HistoryPage,
@@ -13,12 +13,13 @@ import {
   WatchLaterPage,
 } from './pages';
 
-const AppRoutes = ({ playlistModal, setPlaylistModal }) => (
+const AppRoutes = ({ playlistModal, setPlaylistModal, setSkip }) => (
   <Routes>
     <Route
       path="/"
       element={
         <SharedLayout
+          setSkip={setSkip}
           playlistModal={playlistModal}
           setPlaylistModal={setPlaylistModal}
         />
@@ -33,11 +34,15 @@ const AppRoutes = ({ playlistModal, setPlaylistModal }) => (
           />
         }
       />
-      <Route path="/playlists" element={<Playlist />} />
-      <Route path="/liked" element={<LikesPage />} />
-      <Route path="/history" element={<HistoryPage />} />
-      <Route path="/watchlater" element={<WatchLaterPage />} />
-      <Route path="/login" element={<LoginPage />} />
+
+      <Route path="/" element={<PrivateRoute />}>
+        <Route path="/playlists" element={<Playlist />} />
+        <Route path="/liked" element={<LikesPage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/watchlater" element={<WatchLaterPage />} />
+      </Route>
+
+      <Route path="/login" element={<LoginPage setSkip={setSkip} />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route
         path="/video/:videoID"
