@@ -31,7 +31,7 @@ function App() {
       dispatch(setHistory(historyData.history));
     }
     if (watchLaterData) {
-      dispatch(setWatchLater(historyData.watchlater));
+      dispatch(setWatchLater(watchLaterData.watchlater));
     }
   }, [dispatch, historyData, likesData, setSkip, watchLaterData]);
   const [colorState] = useThemeContext();

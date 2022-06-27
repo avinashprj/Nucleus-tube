@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { SideBarDesktop, SideBarMobile, VideoCard } from '../../components';
 import { useClearHistoryMutation } from '../../features/api/historyApi/historySliceApi';
+import { NoVideosFound } from '../../components/NoVideosFound/noVideosFound';
 
 export const HistoryPage = () => {
   const { history } = useSelector((store) => store.history);
@@ -40,7 +41,7 @@ export const HistoryPage = () => {
         <div className="flex-base">
           <div className="outer-grid video-outer-grid">
             {history && history.length === 0 ? (
-              <div className="grid-center">No videos found</div>
+              <NoVideosFound>Watch Videos</NoVideosFound>
             ) : null}
             <div className="video-grid">
               {history &&

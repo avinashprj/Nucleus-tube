@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { SideBarDesktop, SideBarMobile } from '../../components';
+import { NoVideosFound, SideBarDesktop, SideBarMobile } from '../../components';
 import { VideoCard } from '../../components/VideoCard/VideoCard';
 
 export const LikesPage = () => {
@@ -11,7 +11,10 @@ export const LikesPage = () => {
       <SideBarDesktop />
       <SideBarMobile />
       <div className="flex-base flex-column container">
-        <div className="outer-grid flex-base">
+        <div
+          style={{ marginBottom: '1em', marginTop: '1em' }}
+          className="outer-grid flex-base"
+        >
           <div className="page-heading">
             Liked
             <span className="page-number">
@@ -22,7 +25,7 @@ export const LikesPage = () => {
         <div className="flex-base">
           <div className="outer-grid video-outer-grid">
             {likes && likes.length === 0 ? (
-              <div className="grid-center">No videos found</div>
+              <NoVideosFound>Like Videos</NoVideosFound>
             ) : (
               ''
             )}

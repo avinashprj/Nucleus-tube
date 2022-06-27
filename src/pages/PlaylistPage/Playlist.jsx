@@ -8,7 +8,10 @@ export const Playlist = () => (
     <SideBarDesktop />
     <SideBarMobile />
     <div className="flex-base flex-column container">
-      <div className="outer-grid flex-base">
+      <div
+        style={{ marginBottom: '1em', marginTop: '1em' }}
+        className="outer-grid flex-base"
+      >
         <div className="page-heading">
           Playlists <span className="page-number">( 1 )</span>
         </div>
