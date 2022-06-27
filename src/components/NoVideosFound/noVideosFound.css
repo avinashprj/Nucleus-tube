@@ -1,0 +1,8 @@
+.no-found-cta {
+  color: var(--clr-white);
+  font-weight: 600;
+}
+
+.no-found-cta:hover {
+  background-color: var(--clr-grey-10);
+}

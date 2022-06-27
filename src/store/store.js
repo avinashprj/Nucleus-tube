@@ -40,7 +40,6 @@ const rootReducer = (state, action) => {
     // for all keys defined in your persistConfig(s)
     console.log(state);
     storage.removeItem('persist:root');
-
     state = undefined;
     // state.likes = undefined;
     // state.authentication = undefined;

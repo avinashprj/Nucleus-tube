@@ -9,6 +9,7 @@ import { PlaylistModal } from './PlaylistModal/PlaylistModal';
 import { Loader } from './Loader/Loader';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { SingleVideoPlayer } from './SingleVideoPlayer/SingleVideoPlayer';
+import { NoVideosFound } from './NoVideosFound/noVideosFound';
 
 export {
   Navbar,
@@ -22,4 +23,5 @@ export {
   Loader,
   PrivateRoute,
   SingleVideoPlayer,
+  NoVideosFound,
 };
