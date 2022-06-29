@@ -212,6 +212,8 @@ button {
   cursor: pointer;
 }
 button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
   background-color: var(--clr-disable-bg-color);
   color: var(--clr-disable-color);
   border-color: var(--clr-disable-border);
