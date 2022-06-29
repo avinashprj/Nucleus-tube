@@ -107,9 +107,12 @@ export const getVideosFromPlaylistHandler = function (schema, request) {
 
 export const addVideoToPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  console.log(request.requestBody, 'database');
   if (user) {
     const { playlistId } = request.params;
+
     const { video } = JSON.parse(request.requestBody);
+    console.log(video);
     const playlist = user.playlists.find((item) => item._id === playlistId);
     if (playlist.videos.some((item) => item.id === video.id)) {
       return new Response(
