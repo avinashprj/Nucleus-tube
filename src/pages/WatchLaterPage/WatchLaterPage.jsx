@@ -7,7 +7,7 @@ import {
   VideoCard,
 } from '../../components';
 
-export const WatchLaterPage = () => {
+export const WatchLaterPage = ({ playlistModal, setPlaylistModal }) => {
   const { watchLater } = useSelector((store) => store.watchLater);
   console.log(watchLater, 'ASDDSD');
   return (
@@ -36,6 +36,8 @@ export const WatchLaterPage = () => {
                 watchLater?.length > 0 &&
                 watchLater?.map((watchLaterVideo) => (
                   <VideoCard
+                    playlistModal={playlistModal}
+                    setPlaylistModal={setPlaylistModal}
                     key={watchLaterVideo._id}
                     singleVideo={watchLaterVideo}
                   />

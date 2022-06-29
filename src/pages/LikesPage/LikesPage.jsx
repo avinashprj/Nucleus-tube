@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { NoVideosFound, SideBarDesktop, SideBarMobile } from '../../components';
 import { VideoCard } from '../../components/VideoCard/VideoCard';
 
-export const LikesPage = () => {
+export const LikesPage = ({ playlistModal, setPlaylistModal }) => {
   const { likes } = useSelector((store) => store.likes);
   console.log(likes);
   return (
@@ -33,7 +33,12 @@ export const LikesPage = () => {
               {likes &&
                 likes.length > 0 &&
                 likes?.map((likedVideo) => (
-                  <VideoCard key={likedVideo._id} singleVideo={likedVideo} />
+                  <VideoCard
+                    key={likedVideo._id}
+                    singleVideo={likedVideo}
+                    playlistModal={playlistModal}
+                    setPlaylistModal={setPlaylistModal}
+                  />
                 ))}
             </div>
           </div>

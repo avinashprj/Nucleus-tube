@@ -7,6 +7,7 @@ import { WatchLaterPage } from './WatchLaterPage/WatchLaterPage';
 import { LoginPage } from './LoginPage/LoginPage';
 import { SignupPage } from './SignupPage/SignupPage';
 import { SingleVideoPage } from './SingleVideoPage/SingleVideoPage';
+import { PlaylistVideosPage } from './PlaylistVideosPage/PlaylistVideosPage';
 
 export {
   HomePage,
@@ -18,4 +19,5 @@ export {
   LoginPage,
   SignupPage,
   SingleVideoPage,
+  PlaylistVideosPage,
 };

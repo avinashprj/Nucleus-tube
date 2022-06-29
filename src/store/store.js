@@ -22,6 +22,8 @@ import { authSliceApi } from '../features/api/auth/authSliceApi';
 import { likesSliceApi } from '../features/api/likesApi/likesSliceApi';
 import { watchLaterSliceApi } from '../features/api/watchLaterApi/watchLaterApi';
 import { historySliceApi } from '../features/api/historyApi/historySliceApi';
+import playlistsReducer from '../features/playlists/playlistsSlice';
+import { playlistsSliceApi } from '../features/api/playlistsApi/playlistsSliceApi';
 
 const appReducer = combineReducers({
   authentication: authenticationReducer,
@@ -29,11 +31,13 @@ const appReducer = combineReducers({
   likes: likesReducer,
   watchLater: watchLaterReducer,
   history: historyReducer,
+  playlists: playlistsReducer,
   [fetchVideosSliceApi.reducerPath]: fetchVideosSliceApi.reducer,
   [authSliceApi.reducerPath]: authSliceApi.reducer,
   [likesSliceApi.reducerPath]: likesSliceApi.reducer,
   [watchLaterSliceApi.reducerPath]: watchLaterSliceApi.reducer,
   [historySliceApi.reducerPath]: historySliceApi.reducer,
+  [playlistsSliceApi.reducerPath]: playlistsSliceApi.reducer,
 });
 const rootReducer = (state, action) => {
   if (action.type === 'authentication/logoutUser') {
@@ -57,6 +61,7 @@ const persistConfig = {
     authSliceApi.reducerPath,
     watchLaterSliceApi.reducerPath,
     historySliceApi.reducerPath,
+    playlistsSliceApi.reducerPath,
   ],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -72,7 +77,8 @@ export const store = configureStore({
       authSliceApi.middleware,
       likesSliceApi.middleware,
       watchLaterSliceApi.middleware,
-      historySliceApi.middleware
+      historySliceApi.middleware,
+      playlistsSliceApi.middleware
     ),
 });
 

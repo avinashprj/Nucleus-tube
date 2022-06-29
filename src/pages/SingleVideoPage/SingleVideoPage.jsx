@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player/youtube';
 import {
+  PlaylistModal,
   SideBarDesktop,
   SideBarMobile,
   SingleVideoPlayer,
@@ -19,7 +20,9 @@ import {
   useRemoveWatchLaterMutation,
 } from '../../features/api/watchLaterApi/watchLaterApi';
 
-export const SingleVideoPage = ({ setPlaylistModal }) => {
+export const SingleVideoPage = () => {
+  const [playlistModal, setPlaylistModal] = React.useState(false);
+
   const { videoID } = useParams();
   const { videos } = useSelector((state) => state.videos);
   const { likes } = useSelector((state) => state.likes);
@@ -142,6 +145,13 @@ export const SingleVideoPage = ({ setPlaylistModal }) => {
             </div>
           </div>
         </div>
+        {playlistModal && (
+          <PlaylistModal
+            playlistModal={playlistModal}
+            setPlaylistModal={setPlaylistModal}
+            singleVideo={singleVideo}
+          />
+        )}
       </div>
     </>
   );

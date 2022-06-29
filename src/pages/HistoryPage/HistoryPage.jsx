@@ -4,7 +4,7 @@ import { SideBarDesktop, SideBarMobile, VideoCard } from '../../components';
 import { useClearHistoryMutation } from '../../features/api/historyApi/historySliceApi';
 import { NoVideosFound } from '../../components/NoVideosFound/noVideosFound';
 
-export const HistoryPage = () => {
+export const HistoryPage = ({ playlistModal, setPlaylistModal }) => {
   const { history } = useSelector((store) => store.history);
   const { authToken } = useSelector((store) => store.authentication);
   console.log(history);
@@ -47,7 +47,12 @@ export const HistoryPage = () => {
               {history &&
                 history.length > 0 &&
                 history?.map((likedVideo) => (
-                  <VideoCard key={likedVideo._id} singleVideo={likedVideo} />
+                  <VideoCard
+                    key={likedVideo._id}
+                    singleVideo={likedVideo}
+                    playlistModal={playlistModal}
+                    setPlaylistModal={setPlaylistModal}
+                  />
                 ))}
             </div>
           </div>
