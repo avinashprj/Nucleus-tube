@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { toast } from 'react-toastify';
 import { setHistory } from '../../history/historySlice';
-import { setWatchLater } from '../../watchLater/watchLaterSlice';
 
 export const historySliceApi = createApi({
   reducerPath: 'historySliceApi',

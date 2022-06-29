@@ -8,10 +8,6 @@ export const SharedLayout = ({ playlistModal, setPlaylistModal, setSkip }) => (
     <header>
       <Navbar setSkip={setSkip} />
     </header>
-    <PlaylistModal
-      playlistModal={playlistModal}
-      setPlaylistModal={setPlaylistModal}
-    />
     <Outlet />
   </>
 );

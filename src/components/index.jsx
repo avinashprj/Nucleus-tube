@@ -10,6 +10,7 @@ import { Loader } from './Loader/Loader';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { SingleVideoPlayer } from './SingleVideoPlayer/SingleVideoPlayer';
 import { NoVideosFound } from './NoVideosFound/noVideosFound';
+import { PlaylistCard } from './PlaylistCard/PlaylistCard';
 
 export {
   Navbar,
@@ -24,4 +25,5 @@ export {
   PrivateRoute,
   SingleVideoPlayer,
   NoVideosFound,
+  PlaylistCard,
 };

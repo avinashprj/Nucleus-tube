@@ -1,20 +1,25 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-function useCloseOnClickOutside(ref, handler = '') {
+const useClickOutside = (handler) => {
+  const domNode = React.useRef();
+
   React.useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        handler(false);
+    const maybeHandler = (event) => {
+      if (!domNode.current.contains(event.target)) {
+        handler();
       }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref]);
-}
+
+    document.addEventListener('mousedown', maybeHandler);
+
+    return () => {
+      document.removeEventListener('mousedown', maybeHandler);
+    };
+  });
+
+  return domNode;
+};
 const useInput = (state) => {
   const [inputState, setInputState] = React.useState(state);
   const inputUpdate = (e) => {
@@ -24,7 +29,7 @@ const useInput = (state) => {
       [e.target.name]: inpValue,
     });
   };
-  return { inputState, inputUpdate };
+  return { inputState, inputUpdate, setInputState };
 };
 
 function useScrollToTop() {
@@ -60,9 +65,4 @@ function useLocalStorageState(
   return [state, setState];
 }
 
-export {
-  useCloseOnClickOutside,
-  useInput,
-  useScrollToTop,
-  useLocalStorageState,
-};
+export { useClickOutside, useInput, useScrollToTop, useLocalStorageState };

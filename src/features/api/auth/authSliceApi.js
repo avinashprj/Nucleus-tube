@@ -24,7 +24,6 @@ export const authSliceApi = createApi({
           } = await queryFulfilled;
           console.log(encodedToken);
           dispatch(setAuthToken(encodedToken));
-          toast.success('Logged In Successfully');
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
@@ -49,7 +48,6 @@ export const authSliceApi = createApi({
           } = await queryFulfilled;
           console.log(encodedToken);
           dispatch(setAuthToken(encodedToken));
-          toast.success('Logged In Successfully');
           // `onSuccess` side-effect
         } catch ({
           error: {
