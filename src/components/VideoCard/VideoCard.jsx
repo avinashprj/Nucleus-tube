@@ -4,9 +4,13 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { MdPlaylistAdd } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { ActionButtons } from './sub-components/ActionButtons';
+import { PlaylistModal } from '../PlaylistModal/PlaylistModal';
+import { useClickOutside } from '../../CustomHooks/CustomHooks';
 
-export const VideoCard = ({ setPlaylistModal, singleVideo }) => {
+export const VideoCard = ({ singleVideo }) => {
+  const [playlistModal, setPlaylistModal] = React.useState(false);
   const [videoOverlay, setVideoOverlay] = React.useState(false);
+
   return (
     <>
       <div className="video-card">
@@ -25,7 +29,9 @@ export const VideoCard = ({ setPlaylistModal, singleVideo }) => {
           </Link>
           <div className="video-card-dots">
             <button
-              onClick={() => setVideoOverlay((prev) => !prev)}
+              onClick={(e) => {
+                setVideoOverlay((prev) => !prev);
+              }}
               className="border-none"
               type="button"
             >
@@ -40,6 +46,13 @@ export const VideoCard = ({ setPlaylistModal, singleVideo }) => {
             )}
           </div>
         </div>
+        {playlistModal && (
+          <PlaylistModal
+            playlistModal={playlistModal}
+            setPlaylistModal={setPlaylistModal}
+            singleVideo={singleVideo}
+          />
+        )}
       </div>
     </>
   );
