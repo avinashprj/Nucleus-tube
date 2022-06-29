@@ -103,7 +103,7 @@ header {
 /*  note: desktop search bar end */
 
 .search-bar-center {
-  background-color: var(--clr-white);
+  background-color: var(--clr-grey-10);
   /* padding-bottom: 0.5rem; */
   border: 1px solid var(--clr-border);
   padding: 0.4em 0.8em;

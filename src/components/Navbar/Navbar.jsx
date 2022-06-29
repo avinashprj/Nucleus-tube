@@ -4,14 +4,15 @@ import { IoIosSearch } from 'react-icons/io';
 import { FiX } from 'react-icons/fi';
 import { FaUser, FaSearch } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { useCloseOnClickOutside } from '../../CustomHooks/CustomHooks';
+import { useClickOutside } from '../../CustomHooks/CustomHooks';
 import { logoutUser } from '../../features/authentication/authenticationSlice';
 import { Theme } from '../Theme/Theme';
 
 export const Navbar = ({ setSkip }) => {
   const [toggleSearchModal, setToggleSearchModal] = React.useState(false);
-  const searchBarModalRef = React.useRef(null);
-  useCloseOnClickOutside(searchBarModalRef, setToggleSearchModal);
+  const searchBarRef = useClickOutside(() => {
+    setToggleSearchModal(false);
+  });
   const dispatch = useDispatch();
   const { authToken } = useSelector((state) => state.authentication);
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export const Navbar = ({ setSkip }) => {
 
         <div className={`search-bar-modal ${toggleSearchModal ? 'open' : ''}`}>
           <div
-            ref={searchBarModalRef}
+            ref={searchBarRef}
             className={`search-bar ${toggleSearchModal ? 'open' : ''}`}
           >
             <div className="search-bar-heading flex-nav">
