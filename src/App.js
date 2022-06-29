@@ -12,15 +12,18 @@ import { useGetHistoryQuery } from './features/api/historyApi/historySliceApi';
 import { setHistory } from './features/history/historySlice';
 import { useGetWatchLaterQuery } from './features/api/watchLaterApi/watchLaterApi';
 import { setWatchLater } from './features/watchLater/watchLaterSlice';
+import { useGetPlaylistQuery } from './features/api/playlistsApi/playlistsSliceApi';
+import { setPlaylists } from './features/playlists/playlistsSlice';
 
 function App() {
   useScrollToTop();
-  const [playlistModal, setPlaylistModal] = React.useState(false);
+
   const { authToken } = useSelector((store) => store.authentication);
   const [skip, setSkip] = React.useState(true);
   const { data: likesData } = useGetLikesQuery(authToken, { skip });
   const { data: historyData } = useGetHistoryQuery(authToken, { skip });
   const { data: watchLaterData } = useGetWatchLaterQuery(authToken, { skip });
+  const { data: playlistsData } = useGetPlaylistQuery(authToken, { skip });
 
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -33,15 +36,21 @@ function App() {
     if (watchLaterData) {
       dispatch(setWatchLater(watchLaterData.watchlater));
     }
-  }, [dispatch, historyData, likesData, setSkip, watchLaterData]);
+    if (playlistsData) {
+      dispatch(setPlaylists(playlistsData.playlists));
+    }
+  }, [
+    dispatch,
+    historyData,
+    likesData,
+    playlistsData,
+    setSkip,
+    watchLaterData,
+  ]);
   const [colorState] = useThemeContext();
   return (
     <div className="app" data-theme={colorState}>
-      <AppRoutes
-        setSkip={setSkip}
-        playlistModal={playlistModal}
-        setPlaylistModal={setPlaylistModal}
-      />
+      <AppRoutes setSkip={setSkip} />
       <ToastContainer autoClose={1500} />
     </div>
   );
