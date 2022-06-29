@@ -1,52 +1,41 @@
 import React from 'react';
-import { BsThreeDotsVertical } from 'react-icons/bs';
-import { CgPlayList } from 'react-icons/cg';
-import { SideBarDesktop, SideBarMobile } from '../../components';
+import { useSelector } from 'react-redux';
+import {
+  NoVideosFound,
+  PlaylistCard,
+  SideBarDesktop,
+  SideBarMobile,
+} from '../../components';
 
-export const Playlist = () => (
-  <>
-    <SideBarDesktop />
-    <SideBarMobile />
-    <div className="flex-base flex-column container">
-      <div
-        style={{ marginBottom: '1em', marginTop: '1em' }}
-        className="outer-grid flex-base"
-      >
-        <div className="page-heading">
-          Playlists <span className="page-number">( 1 )</span>
+export const Playlist = () => {
+  const { playlists } = useSelector((store) => store.playlists);
+  console.log(playlists, 'Playlists');
+  return (
+    <>
+      <SideBarDesktop />
+      <SideBarMobile />
+      <div className="flex-base flex-column container">
+        <div
+          style={{ marginBottom: '1em', marginTop: '1em' }}
+          className="outer-grid flex-base"
+        >
+          <div className="page-heading">
+            Playlists <span className="page-number">( 1 )</span>
+          </div>
         </div>
-      </div>
-      <div className="flex-base">
-        <div className="outer-grid video-outer-grid">
-          <div className="video-grid">
-            <div className="video-card">
-              <div className="video-card-main">
-                <img
-                  src="https://i.ytimg.com/vi/JXeJANDKwDc/0.jpg"
-                  alt="video thumbnail"
-                  className="relative"
-                />
-                <div className="flex flex-column playlist-overlay">
-                  <div className="playlist-overlay-number">1</div>
-                  <CgPlayList />
-                </div>
-              </div>
-              <div className="video-card-details">
-                <div className="flex-base flex-column ">
-                  <button className="playlist-card-heading" type="button">
-                    music
-                  </button>
-                </div>
-                <div className="playlist-card-dots flex">
-                  <button className="border-none " type="button">
-                    <BsThreeDotsVertical className="icon-svg flex" />
-                  </button>
-                </div>
-              </div>
+        <div className="flex-base">
+          <div className="outer-grid video-outer-grid">
+            {playlists?.length === 0 ? (
+              <NoVideosFound>Add Playlist</NoVideosFound>
+            ) : null}
+            <div className="video-grid">
+              {playlists.map((playlist) => (
+                <PlaylistCard key={playlist._id} playlist={playlist} />
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};

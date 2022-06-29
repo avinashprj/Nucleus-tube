@@ -1,5 +1,5 @@
 .playlist-outer-modal {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0 0 0 / 60%);
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -44,8 +44,12 @@
 .playlist-create-button {
   color: black;
   padding: 0.5em;
-  background-color: var(--clr-white);
+  background-color: var(--clr-grey-10);
   font-size: 1.6rem;
   border-radius: 0.5em;
   cursor: pointer;
+}
+.playlist-card-overlay {
+  bottom: -2.6em;
+  right: 0.2em;
 }

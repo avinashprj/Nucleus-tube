@@ -11,8 +11,9 @@
 }
 .playlist-card-heading {
   font-weight: 600;
-  font-size: 1.8rem;
-  color: var(--clr-white);
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: var(--clr-grey-10);
   background-color: transparent;
   padding: 0px;
   border: none;
