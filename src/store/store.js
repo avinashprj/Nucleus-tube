@@ -55,7 +55,10 @@ const persistConfig = {
   version: 1,
   storage,
   blacklist: [
-    'authentication',
+    'likes',
+    'watchLater',
+    'playlists',
+    'history',
     fetchVideosSliceApi.reducerPath,
     likesSliceApi.reducerPath,
     authSliceApi.reducerPath,
