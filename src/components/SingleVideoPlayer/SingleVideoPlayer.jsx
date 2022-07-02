@@ -5,11 +5,10 @@ import { usePostHistoryMutation } from '../../features/api/historyApi/historySli
 import { isPresentInState } from '../../utils/utils';
 
 export const SingleVideoPlayer = ({ singleVideo, videoID }) => {
-  console.log(singleVideo, videoID);
   const { authToken } = useSelector((store) => store.authentication);
   const [addToHistory] = usePostHistoryMutation();
   const { history } = useSelector((state) => state.history);
-  console.log(authToken);
+
   const addToHistoryHandler = () => {
     if (authToken.id && !isPresentInState(singleVideo, history))
       addToHistory({ authToken, singleVideo });

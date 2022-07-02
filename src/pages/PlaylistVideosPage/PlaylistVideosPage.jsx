@@ -7,7 +7,7 @@ import { VideoCard } from '../../components/VideoCard/VideoCard';
 export const PlaylistVideosPage = () => {
   const { playlists } = useSelector((store) => store.playlists);
   const { playlistID } = useParams();
-  console.log(playlistID);
+
   const playlist = playlists?.find(
     (playlistItem) => playlistID === playlistItem._id
   );

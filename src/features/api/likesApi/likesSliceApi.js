@@ -7,17 +7,14 @@ export const likesSliceApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '/api/user' }),
   endpoints: (builder) => ({
     postLikes: builder.mutation({
-      query: ({ singleVideo: video, authToken: { id } }) => {
-        console.log(video, id);
-        return {
-          url: '/likes',
-          method: 'POST',
-          body: {
-            video,
-          },
-          headers: { authorization: id },
-        };
-      },
+      query: ({ singleVideo: video, authToken: { id } }) => ({
+        url: '/likes',
+        method: 'POST',
+        body: {
+          video,
+        },
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -28,20 +25,17 @@ export const likesSliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong');
         }
       },
     }),
     removeLikes: builder.mutation({
-      query: ({ singleVideo, authToken: { id } }) => {
-        console.log(singleVideo, id);
-        return {
-          url: `/likes/${singleVideo._id}`,
-          method: 'DELETE',
-          headers: { authorization: id },
-        };
-      },
+      query: ({ singleVideo, authToken: { id } }) => ({
+        url: `/likes/${singleVideo._id}`,
+        method: 'DELETE',
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -53,7 +47,7 @@ export const likesSliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong');
         }
       },
@@ -68,8 +62,8 @@ export const likesSliceApi = createApi({
         // `onStart` side-effect
         try {
           const data = await queryFulfilled;
-          console.log('HELLO FROM GET LIKES');
-          // console.log(encodedToken);
+
+          //
           // dispatch(setAuthToken(encodedToken));
           // toast.success('Logged In Successfully');
           // `onSuccess` side-effect

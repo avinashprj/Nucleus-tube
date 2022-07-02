@@ -8,7 +8,6 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     setHistory: (state, { payload }) => {
-      console.log(payload);
       state.history = payload;
     },
   },

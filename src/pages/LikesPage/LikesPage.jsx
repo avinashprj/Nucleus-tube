@@ -5,7 +5,7 @@ import { VideoCard } from '../../components/VideoCard/VideoCard';
 
 export const LikesPage = ({ playlistModal, setPlaylistModal }) => {
   const { likes } = useSelector((store) => store.likes);
-  console.log(likes);
+
   return (
     <>
       <SideBarDesktop />

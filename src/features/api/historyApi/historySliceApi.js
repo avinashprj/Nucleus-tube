@@ -14,17 +14,14 @@ export const historySliceApi = createApi({
       }),
     }),
     postHistory: builder.mutation({
-      query: ({ singleVideo: video, authToken: { id } }) => {
-        console.log(video, id);
-        return {
-          url: '/history',
-          method: 'POST',
-          body: {
-            video,
-          },
-          headers: { authorization: id },
-        };
-      },
+      query: ({ singleVideo: video, authToken: { id } }) => ({
+        url: '/history',
+        method: 'POST',
+        body: {
+          video,
+        },
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -34,20 +31,16 @@ export const historySliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
           // toast.error('something went Wrong');
         }
       },
     }),
     removeHistory: builder.mutation({
-      query: ({ singleVideo, authToken: { id } }) => {
-        console.log(singleVideo, id);
-        return {
-          url: `/history/${singleVideo._id}`,
-          method: 'DELETE',
-          headers: { authorization: id },
-        };
-      },
+      query: ({ singleVideo, authToken: { id } }) => ({
+        url: `/history/${singleVideo._id}`,
+        method: 'DELETE',
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -59,32 +52,29 @@ export const historySliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong');
         }
       },
     }),
     clearHistory: builder.mutation({
-      query: (authToken) => {
-        console.log(authToken);
-        return {
-          url: '/history/all',
-          method: 'DELETE',
-          headers: { authorization: authToken.id },
-        };
-      },
+      query: (authToken) => ({
+        url: '/history/all',
+        method: 'DELETE',
+        headers: { authorization: authToken.id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
           const data = await queryFulfilled;
-          console.log(data, 'HELLO');
-          // console.log(encodedToken);
+
+          //
           // dispatch(setAuthToken(encodedToken));
           // toast.success('Logged In Successfully');
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong history');
         }
       },

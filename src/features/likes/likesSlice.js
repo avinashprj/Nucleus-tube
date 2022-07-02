@@ -8,7 +8,6 @@ const likesSlice = createSlice({
   initialState,
   reducers: {
     setLikes: (state, { payload }) => {
-      console.log(payload);
       state.likes = payload;
     },
   },

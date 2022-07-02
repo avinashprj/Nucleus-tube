@@ -42,7 +42,7 @@ const appReducer = combineReducers({
 const rootReducer = (state, action) => {
   if (action.type === 'authentication/logoutUser') {
     // for all keys defined in your persistConfig(s)
-    console.log(state);
+
     storage.removeItem('persist:root');
     state = undefined;
     // state.likes = undefined;

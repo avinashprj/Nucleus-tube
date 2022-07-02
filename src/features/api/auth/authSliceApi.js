@@ -22,7 +22,7 @@ export const authSliceApi = createApi({
           const {
             data: { encodedToken },
           } = await queryFulfilled;
-          console.log(encodedToken);
+
           dispatch(setAuthToken(encodedToken));
           // `onSuccess` side-effect
         } catch (err) {
@@ -46,7 +46,7 @@ export const authSliceApi = createApi({
           const {
             data: { encodedToken },
           } = await queryFulfilled;
-          console.log(encodedToken);
+
           dispatch(setAuthToken(encodedToken));
           // `onSuccess` side-effect
         } catch ({
@@ -55,7 +55,7 @@ export const authSliceApi = createApi({
           },
         }) {
           // `onError` side-effect
-          console.log(errors[0]);
+
           toast.error(errors[0]);
         }
       },
@@ -76,7 +76,7 @@ export const authSliceApi = createApi({
           const {
             data: { encodedToken },
           } = await queryFulfilled;
-          console.log(encodedToken);
+
           dispatch(setAuthToken(encodedToken));
           toast.success('Sign Up Successfully');
           // `onSuccess` side-effect
@@ -86,7 +86,7 @@ export const authSliceApi = createApi({
           },
         }) {
           // `onError` side-effect
-          console.log(errors[0]);
+
           toast.error(errors[0]);
         }
       },

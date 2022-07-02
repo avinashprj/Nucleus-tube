@@ -32,38 +32,34 @@ export const playlistsSliceApi = createApi({
           const {
             data: { playlists },
           } = await queryFulfilled;
-          console.log(playlists, 'ADDDED TO PLAYLIST');
+
           dispatch(setPlaylists(playlists));
           toast.success('Added Playlist');
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
           // toast.error('something went Wrong');
         }
       },
     }),
     removePlaylist: builder.mutation({
-      query: ({ playlistID, authToken: { id } }) => {
-        console.log(playlistID, id);
-        return {
-          url: `/playlists/${playlistID}`,
-          method: 'DELETE',
-          headers: { authorization: id },
-        };
-      },
+      query: ({ playlistID, authToken: { id } }) => ({
+        url: `/playlists/${playlistID}`,
+        method: 'DELETE',
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
           const {
             data: { playlists },
           } = await queryFulfilled;
-          console.log(playlists, 'DELETING PLALIST');
+
           dispatch(setPlaylists(playlists));
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong');
         }
       },
@@ -83,28 +79,25 @@ export const playlistsSliceApi = createApi({
           const {
             data: { playlist },
           } = await queryFulfilled;
-          console.log(playlist, 'Adding video to playlist');
+
           dispatch(setVideoInPlaylist(playlist));
           toast.success('added video to playlist');
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong PLAYLIST');
         }
       },
     }),
     removeVideoFromPlaylist: builder.mutation({
-      query: ({ playlistId, authToken, video }) => {
-        console.log(playlistId);
-        return {
-          url: `/playlists/${playlistId}/${video._id}`,
-          method: 'DELETE',
-          body: {
-            video,
-          },
-          headers: { authorization: authToken.id },
-        };
-      },
+      query: ({ playlistId, authToken, video }) => ({
+        url: `/playlists/${playlistId}/${video._id}`,
+        method: 'DELETE',
+        body: {
+          video,
+        },
+        headers: { authorization: authToken.id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -115,7 +108,7 @@ export const playlistsSliceApi = createApi({
           toast.success('removed video from playlist');
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong history');
         }
       },

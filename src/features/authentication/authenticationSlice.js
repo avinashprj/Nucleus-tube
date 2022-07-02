@@ -15,7 +15,7 @@ const authenticationSlice = createSlice({
       state.authToken = { id: payload };
     },
     logoutUser: (state, action) => {
-      // console.log(action);
+      //
       // storage.removeItem('persist:root');
       // // window.localStorage.clear();
       // state.authToken = { id: '' };

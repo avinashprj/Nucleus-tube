@@ -22,7 +22,6 @@ export const ActionButtons = ({
   //   setVideoOverlay(false);
   // });
   const { pathname } = useLocation();
-  console.log(pathname, 'PLAYLIST');
   const { authToken } = useSelector((store) => store.authentication);
   const { watchLater } = useSelector((store) => store.watchLater);
   const [removeLikes, { isLoading: isDeletingLikes }] =
@@ -38,7 +37,7 @@ export const ActionButtons = ({
     useRemoveVideoFromPlaylistMutation();
 
   const { playlistID } = useParams();
-  console.log(playlistID);
+
   // useCloseOnClickOutside(videoCardOverlayRef, setVideoOverlay);
   return (
     <>

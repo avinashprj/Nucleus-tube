@@ -9,7 +9,7 @@ import {
 
 export const Playlist = () => {
   const { playlists } = useSelector((store) => store.playlists);
-  console.log(playlists, 'Playlists');
+
   return (
     <>
       <SideBarDesktop />

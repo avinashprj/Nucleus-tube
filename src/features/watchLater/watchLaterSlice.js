@@ -8,7 +8,6 @@ const watchLaterSlice = createSlice({
   initialState,
   reducers: {
     setWatchLater: (state, { payload }) => {
-      console.log(payload);
       state.watchLater = payload;
     },
   },

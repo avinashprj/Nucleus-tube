@@ -7,7 +7,7 @@ import { NoVideosFound } from '../../components/NoVideosFound/noVideosFound';
 export const HistoryPage = ({ playlistModal, setPlaylistModal }) => {
   const { history } = useSelector((store) => store.history);
   const { authToken } = useSelector((store) => store.authentication);
-  console.log(history);
+
   const [clearHistory, { isLoading: isClearingHistory }] =
     useClearHistoryMutation();
   return (

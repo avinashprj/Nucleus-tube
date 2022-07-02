@@ -51,7 +51,6 @@ export const PlaylistModal = ({
     toast.error('Playlist already present');
   }
   const checkBoxHandler = (e, playlistItem, video) => {
-    console.log(video, 'SADSDSDASHDouqgwubdoasbdsln');
     if (video) {
       if (e.target.checked) {
         addVideoToPlaylist({

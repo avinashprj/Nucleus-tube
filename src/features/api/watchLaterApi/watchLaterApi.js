@@ -15,17 +15,14 @@ export const watchLaterSliceApi = createApi({
       }),
     }),
     postWatchLater: builder.mutation({
-      query: ({ singleVideo: video, authToken: { id } }) => {
-        console.log(video, id);
-        return {
-          url: '/watchlater',
-          method: 'POST',
-          body: {
-            video,
-          },
-          headers: { authorization: id },
-        };
-      },
+      query: ({ singleVideo: video, authToken: { id } }) => ({
+        url: '/watchlater',
+        method: 'POST',
+        body: {
+          video,
+        },
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -36,20 +33,17 @@ export const watchLaterSliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong');
         }
       },
     }),
     removeWatchLater: builder.mutation({
-      query: ({ singleVideo, authToken: { id } }) => {
-        console.log(singleVideo, id);
-        return {
-          url: `/watchlater/${singleVideo._id}`,
-          method: 'DELETE',
-          headers: { authorization: id },
-        };
-      },
+      query: ({ singleVideo, authToken: { id } }) => ({
+        url: `/watchlater/${singleVideo._id}`,
+        method: 'DELETE',
+        headers: { authorization: id },
+      }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         // `onStart` side-effect
         try {
@@ -61,7 +55,7 @@ export const watchLaterSliceApi = createApi({
           // `onSuccess` side-effect
         } catch (err) {
           // `onError` side-effect
-          console.log(err);
+
           toast.error('something went Wrong');
         }
       },
