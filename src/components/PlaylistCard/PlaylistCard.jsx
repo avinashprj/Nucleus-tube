@@ -20,7 +20,7 @@ export const PlaylistCard = ({ playlist }) => {
         <img
           src={`${
             playlist.videos?.length === 0
-              ? 'https://i.ibb.co/dk7hGmq/Feeling-Empty-Inside.png'
+              ? 'https://res.cloudinary.com/dwmd1yjww/image/upload/v1656930047/Feeling-Empty-Inside_scldxa.png'
               : playlist?.videos[0]?.img
           }`}
           alt="video thumbnail"

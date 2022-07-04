@@ -20,7 +20,8 @@ export const Playlist = () => {
           className="outer-grid flex-base"
         >
           <div className="page-heading">
-            Playlists <span className="page-number">( 1 )</span>
+            Playlists{' '}
+            <span className="page-number">( {playlists?.length || 0} )</span>
           </div>
         </div>
         <div className="flex-base">
