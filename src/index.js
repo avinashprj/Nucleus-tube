@@ -9,7 +9,9 @@ import App from './App';
 import { makeServer } from './server';
 import { store, persistor } from './store/store';
 import { ThemeContextProvider } from './context/ThemeContext/ThemeContext';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+console.log(serviceWorkerRegistration, 'asf');
 // Call make Server
 makeServer();
 const root = createRoot(document.getElementById('root'));
@@ -26,3 +28,4 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+serviceWorkerRegistration.register();
