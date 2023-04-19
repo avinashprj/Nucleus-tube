@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosSearch } from 'react-icons/io';
 import { FiX } from 'react-icons/fi';
 import { FaUser, FaSearch } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
+import Fuse from 'fuse.js';
 import { useClickOutside } from '../../CustomHooks/CustomHooks';
 import { logoutUser } from '../../features/authentication/authenticationSlice';
 import { Theme } from '../Theme/Theme';
@@ -13,8 +14,31 @@ export const Navbar = ({ setSkip }) => {
   const searchBarRef = useClickOutside(() => {
     setToggleSearchModal(false);
   });
+
   const dispatch = useDispatch();
   const { authToken } = useSelector((state) => state.authentication);
+  const { videos } = useSelector((state) => state.videos);
+  const options = {
+    includeScore: true,
+    threshold: 0.2,
+    // Search in `author` and in `tags` array
+    keys: ['category', 'creator', 'title'],
+  };
+  const [searchResults, setSearchResults] = useState([]);
+  console.log(
+    '🚀 ~ file: Navbar.jsx:28 ~ Navbar ~ searchResults:',
+    searchResults
+  );
+
+  const fuse = new Fuse(videos, options);
+  const [searchValue, setSearchValue] = useState('');
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const result = fuse.search(searchValue);
+    setSearchResults(result);
+  };
+
   const navigate = useNavigate();
   return (
     <nav className="navbar flex-nav">
@@ -25,15 +49,44 @@ export const Navbar = ({ setSkip }) => {
       </div>
       <div className="nav-middle flex-al-center">
         {/* Note: Desktop search bar */}
-        <form className="search-bar-center-desktop flex-al-center m-right-small">
+        <form
+          onSubmit={(e) => onSubmit(e)}
+          className="search-bar-center-desktop flex-al-center m-right-small"
+        >
           <input
             className="flex-al-center"
-            placeholder="Search for Products Here"
+            placeholder="Search for Videos Here"
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              onSubmit(e);
+            }}
           />
           <button className="flex-al-center" type="submit">
             <FaSearch className="nav-icons flex" />
           </button>
         </form>
+        <div className="suggestions">
+          {searchResults.length > 0
+            ? searchResults.slice(0, 5).map((singleProduct) => (
+                <Link
+                  key={singleProduct.item._id}
+                  className="suggestion"
+                  aria-label="go-to-singleProduct"
+                  to={`/video/${singleProduct.item._id}`}
+                  onClick={() => {
+                    setSearchValue('');
+                    setSearchResults([]);
+                  }}
+                >
+                  {singleProduct.item.title}
+                </Link>
+              ))
+            : searchValue && (
+                <div className="suggestion">{`No results found for ${searchValue}`}</div>
+              )}
+        </div>
+
         {/* Note: Desktop search bar END */}
 
         <div className={`search-bar-modal ${toggleSearchModal ? 'open' : ''}`}>
@@ -53,11 +106,38 @@ export const Navbar = ({ setSkip }) => {
               </button>
             </div>
             <form className="search-bar-center flex-al-center">
-              <input placeholder="Search for Products Here" />
+              <input
+                placeholder="Search for Videos Here"
+                value={searchValue}
+                onChange={(e) => {
+                  setSearchValue(e.target.value);
+                  onSubmit(e);
+                }}
+              />
               <button type="submit">
                 <IoIosSearch className="nav-icons icon-link" />
               </button>
             </form>
+            <div className="suggestions-mobile">
+              {searchResults.length > 0
+                ? searchResults.slice(0, 5).map((singleProduct) => (
+                    <Link
+                      key={singleProduct.item._id}
+                      className="suggestion-mobile"
+                      aria-label="go-to-singleProduct"
+                      to={`/video/${singleProduct.item._id}`}
+                      onClick={() => {
+                        setSearchValue('');
+                        setSearchResults([]);
+                      }}
+                    >
+                      {singleProduct.item.title}
+                    </Link>
+                  ))
+                : searchValue && (
+                    <div className="suggestion">{`No results found for ${searchValue}`}</div>
+                  )}
+            </div>
           </div>
         </div>
       </div>

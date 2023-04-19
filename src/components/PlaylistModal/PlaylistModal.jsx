@@ -69,7 +69,6 @@ export const PlaylistModal = ({
   };
 
   const [colorState] = useThemeContext();
-  console.log(colorState);
 
   return ReactDom.createPortal(
     <div className="app" data-theme={colorState}>

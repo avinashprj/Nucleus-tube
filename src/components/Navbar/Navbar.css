@@ -10,6 +10,9 @@ header {
   padding: 2rem 3rem;
   box-shadow: var(--lighter-shadow);
 }
+..suggestions.suggestions {
+  position: relative;
+}
 .navbar .nav-icons {
   transition: var(--transition-medium);
   width: 2rem;
@@ -114,7 +117,8 @@ header {
   flex-grow: 1;
   border: none;
   font-size: 1.5rem;
-  color: var(--clr-grey-10);
+  color: black;
+  /* color: var(--clr-grey-10); */
 }
 
 .search-bar-center button {
@@ -134,8 +138,67 @@ header {
   display: none !important;
 }
 .search-bar-center input:focus {
-  color: var(--clr-grey-10);
+  /* color: var(--clr-grey-10); */
   outline: none;
+}
+
+.suggestions {
+  position: absolute;
+  z-index: 8;
+  top: 3.8rem;
+  left: 0.8rem;
+  border-radius: 0.2rem;
+  height: fit-content;
+  max-height: 60vh;
+  width: 80%;
+  /* overflow-y: scroll; */
+  width: max-content;
+  background-color: white;
+  color: black;
+}
+.suggestions-mobile {
+  position: absolute;
+  z-index: 8;
+  top: 10.5rem;
+  left: 4rem;
+  border-radius: 0.2rem;
+  height: fit-content;
+  max-height: 60vh;
+  /* overflow-y: scroll; */
+  width: 80%;
+  background-color: white;
+  color: black;
+}
+
+.suggestion {
+  height: 3rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  width: 30rem;
+  overflow-y: hidden;
+  cursor: pointer;
+  padding: 2rem 1.5rem;
+  color: black;
+  transition: var(--transition-medium);
+}
+.suggestion-mobile {
+  height: 3rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  width: 30rem;
+  overflow-y: hidden;
+  cursor: pointer;
+  padding: 2rem 1.5rem;
+  color: black;
+  transition: var(--transition-medium);
+}
+.suggestion:hover,
+.suggestion-mobile:hover {
+  background-color: var(--clr-grey-10);
 }
 
 @media only screen and (max-width: 42.375em) {
@@ -144,5 +207,8 @@ header {
   }
   .search-bar-center-desktop {
     display: none !important;
+  }
+  .suggestions {
+    display: none;
   }
 }
