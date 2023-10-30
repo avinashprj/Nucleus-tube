@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoIosSearch } from 'react-icons/io';
 import { FiX } from 'react-icons/fi';
@@ -25,19 +25,27 @@ export const Navbar = ({ setSkip }) => {
     keys: ['category', 'creator', 'title'],
   };
   const [searchResults, setSearchResults] = useState([]);
-  console.log(
-    '🚀 ~ file: Navbar.jsx:28 ~ Navbar ~ searchResults:',
-    searchResults
-  );
 
   const fuse = new Fuse(videos, options);
   const [searchValue, setSearchValue] = useState('');
-  const onSubmit = (e) => {
-    e.preventDefault();
 
-    const result = fuse.search(searchValue);
-    setSearchResults(result);
-  };
+  const onSubmit = useCallback(
+    (e) => {
+      e?.preventDefault();
+      if (!searchValue) {
+        console.log('@sdadjs');
+        setSearchResults([]);
+        return;
+      }
+
+      const result = fuse.search(searchValue);
+      setSearchResults(result);
+    },
+    [searchValue]
+  );
+  useEffect(() => {
+    onSubmit();
+  }, [onSubmit, searchValue]);
 
   const navigate = useNavigate();
   return (
@@ -59,33 +67,32 @@ export const Navbar = ({ setSkip }) => {
             value={searchValue}
             onChange={(e) => {
               setSearchValue(e.target.value);
-              onSubmit(e);
             }}
           />
           <button className="flex-al-center" type="submit">
             <FaSearch className="nav-icons flex" />
           </button>
+          <div className="suggestions">
+            {searchResults.length > 0
+              ? searchResults.slice(0, 5).map((singleProduct) => (
+                  <Link
+                    key={singleProduct.item._id}
+                    className="suggestion"
+                    aria-label="go-to-singleProduct"
+                    to={`/video/${singleProduct.item._id}`}
+                    onClick={() => {
+                      setSearchValue('');
+                      setSearchResults([]);
+                    }}
+                  >
+                    {singleProduct.item.title}
+                  </Link>
+                ))
+              : searchValue && (
+                  <div className="suggestion">{`No results found for ${searchValue}`}</div>
+                )}
+          </div>
         </form>
-        <div className="suggestions">
-          {searchResults.length > 0
-            ? searchResults.slice(0, 5).map((singleProduct) => (
-                <Link
-                  key={singleProduct.item._id}
-                  className="suggestion"
-                  aria-label="go-to-singleProduct"
-                  to={`/video/${singleProduct.item._id}`}
-                  onClick={() => {
-                    setSearchValue('');
-                    setSearchResults([]);
-                  }}
-                >
-                  {singleProduct.item.title}
-                </Link>
-              ))
-            : searchValue && (
-                <div className="suggestion">{`No results found for ${searchValue}`}</div>
-              )}
-        </div>
 
         {/* Note: Desktop search bar END */}
 
@@ -129,6 +136,7 @@ export const Navbar = ({ setSkip }) => {
                       onClick={() => {
                         setSearchValue('');
                         setSearchResults([]);
+                        setToggleSearchModal(false);
                       }}
                     >
                       {singleProduct.item.title}

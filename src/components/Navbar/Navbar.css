@@ -10,6 +10,7 @@ header {
   padding: 2rem 3rem;
   box-shadow: var(--lighter-shadow);
 }
+
 ..suggestions.suggestions {
   position: relative;
 }
@@ -75,6 +76,7 @@ header {
 
 /* note: desktop search bar */
 .search-bar-center-desktop {
+  position: relative;
   width: 45vw;
   background-color: var(--clr-white-2);
   /* padding-bottom: 0.5rem; */
